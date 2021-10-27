@@ -15,11 +15,10 @@ export class UserService {
   }
 
   register(user: any) {
-      user.balance = 10000;
-      return this.http.post(`${this.baseURL}/user`, user);
+      return this.http.post(`${this.baseURL}/users`, user);
   }
 
   delete(id: number) {
-      return this.http.delete(`${this.baseURL}/user/${id}`);
+      return this.http.delete(`${this.baseURL}/users/${id}`);
   }
 }

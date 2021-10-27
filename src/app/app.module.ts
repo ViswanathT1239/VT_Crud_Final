@@ -10,12 +10,18 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './auth.guard';
 import { NgxLoadingModule } from 'ngx-loading';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RegisterComponent } from './register/register.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavBarComponent,
+    RegisterComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

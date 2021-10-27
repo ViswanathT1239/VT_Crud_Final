@@ -24,13 +24,9 @@ export class AuthenticationService {
       return this.currentUserSubject.value;
   }
 
-  login(userId, azurePersonId): any {
+  login(userId, password): any {
 ////TODO
-      // return this.http.get(`${this.baseURL}/User/Face?userId=${userId}&azurePersonId=${azurePersonId}`)
-      //     .pipe(map(user => {
-      //         return true;
-      //     }));
-      return true;
+     return true;
   }
 
   logout() {
