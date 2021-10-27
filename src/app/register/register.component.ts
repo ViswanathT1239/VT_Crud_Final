@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit {
   createPerson() {
     this.loading = true;
     var user = {
-      id: 0,
       firstname: this.registerForm.value.firstname,
       lastname: this.registerForm.value.lastname,
       email: this.registerForm.value.email,

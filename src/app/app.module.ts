@@ -13,6 +13,11 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RegisterComponent } from './register/register.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VtMatTableComponent } from './helpers/vt-mat-table/vt-mat-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,8 @@ import { EmployeeComponent } from './employee/employee.component';
     HomeComponent,
     NavBarComponent,
     RegisterComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    VtMatTableComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,11 @@ import { EmployeeComponent } from './employee/employee.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     AuthenticationService,

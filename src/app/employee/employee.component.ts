@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Employee } from '../models/employee';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-
-  constructor() { }
+  employees: Observable<Employee[]>=new Observable<Employee[]>();
+  constructor(private employeeService: EmployeeService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.reloadData();
   }
+  reloadData() {
+    this.employees = this.employeeService.getEmployeesList();
+  }
+
 
 }
