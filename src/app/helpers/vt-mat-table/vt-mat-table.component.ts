@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { first } from 'rxjs/operators';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { VtMatTableDataSource, VtMatTableItem } from './vt-mat-table-datasource';
 
 @Component({
@@ -16,10 +18,15 @@ export class VtMatTableComponent implements AfterViewInit {
   dataSource: VtMatTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'email'];
 
-  constructor() {
+  constructor(private employeeService : EmployeeService) {
     this.dataSource = new VtMatTableDataSource();
+  }
+
+  ngOnInit(){
+    this.employeeService.getEmployeesList().pipe(first()).subscribe((data:any)=>
+    this.dataSource = data);
   }
 
   ngAfterViewInit(): void {
