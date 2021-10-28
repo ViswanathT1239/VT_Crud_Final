@@ -29,7 +29,9 @@ export class EmployeeCreateComponent implements OnInit {
     });
     this.employeeService.getEmployeesList().subscribe(data => {
       this.employees = data;
+      if (this.employees.length>0){
       this.employees.sort((a, b) => b.id - a.id);
+      }
     });
 
   }
@@ -53,7 +55,7 @@ export class EmployeeCreateComponent implements OnInit {
   createPerson() {
     this.loading = true;
     var user = {
-      id: this.employees[0].id + 1,
+      id: this.employees.length==0 ? 1 : this.employees[0].id + 1,
       name: this.employeeForm.value.name,
       email: this.employeeForm.value.email
     };

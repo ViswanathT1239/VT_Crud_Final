@@ -21,6 +21,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import {MatIconModule} from '@angular/material/icon';
 import { EmployeeViewComponent } from './employee-view/employee-view.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EmployeeViewComponent } from './employee-view/employee-view.component';
     EmployeeComponent,
     VtMatTableComponent,
     EmployeeCreateComponent,
-    EmployeeViewComponent
+    EmployeeViewComponent,
+    EmployeeEditComponent
   ],
   imports: [
     BrowserModule,

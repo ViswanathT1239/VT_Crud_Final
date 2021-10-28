@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'employees', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'add', component: EmployeeCreateComponent, canActivate: [AuthGuard] },
+  { path: 'edit', component: EmployeeCreateComponent, canActivate: [AuthGuard] },
   { path: 'view', component: EmployeeViewComponent, canActivate: [AuthGuard] },
 ];
 

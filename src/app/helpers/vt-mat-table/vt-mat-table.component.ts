@@ -41,7 +41,10 @@ export class VtMatTableComponent implements OnInit {
     this.router.navigate(['/add']);
   }
   viewEmployee(id: number) {
-    this.router.navigate(['view'], { queryParams: { id: id } });
+    this.router.navigate(['/view'], { queryParams: { id: id } });
+  }
+  editEmployee(id: number) {
+    this.router.navigate(['/edit'], { queryParams: { id: id } });
   }
   deleteEmployee(id: number) {
     this.employeeService.deleteEmployee(id)
