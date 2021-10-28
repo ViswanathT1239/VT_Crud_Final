@@ -1,0 +1,65 @@
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+       <section class="h-100 bg-dark">
+           <div class=" ">
+             <div class="row d-flex justify-content-center align-items-center h-100">
+               <div class="col">
+                 <div class="card card-registration my-4" style="margin-top: 0px !important;">
+                   <div class="row g-0">
+                      <div class="col-xl-6">
+                       <div class="card-body p-md-12 text-black">
+                         <h3 class="mb-5 text-uppercase">Employee Creation Form</h3>
+         
+                         <div class="row">
+                           <div class="col-md-12 mb-4">
+                             <div class="form-outline">
+                              
+                               <label class="form-label" for="Name">Name</label>
+                               <input type="text" formControlName="name" class="form-control form-control-lg"
+                                   [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                               <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                   <div *ngIf="f.name.errors.required">Name is required</div>
+                               </div>
+       
+                             </div>
+                           </div>
+                         </div>
+        
+                         <div class="row">
+                           <div class="col-md-12 mb-4">
+                               <div class="form-outline">
+                                
+                                 <label class="form-label" for="Email">Email</label>
+                                 <input type="text" formControlName="email" class="form-control form-control-lg"
+                                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                       <div *ngIf="f.email.errors.required">Email is required</div>
+                                   </div>
+         
+                               </div>
+                             </div>
+                         </div>
+         
+                         <div class="d-flex justify-content-end pt-3">
+                           <button type="button" class="btn btn-light btn-lg" routerLink="/employees">Cancel</button>
+       
+       
+                           <button [disabled]="loading" class="btn btn-warning btn-lg ms-2">
+                               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                               Add
+                           </button>
+       
+                         </div>
+         
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
+       </form>
+
+

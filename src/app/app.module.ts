@@ -18,6 +18,7 @@ import { VtMatTableComponent } from './helpers/vt-mat-table/vt-mat-table.compone
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatSortModule } from '@angular/material/sort';
     NavBarComponent,
     RegisterComponent,
     EmployeeComponent,
-    VtMatTableComponent
+    VtMatTableComponent,
+    EmployeeCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +45,8 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   providers: [
     AuthenticationService,
-  UserService,
-AuthGuard],
+    UserService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
