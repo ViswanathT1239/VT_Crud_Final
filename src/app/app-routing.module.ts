@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { EmployeeViewComponent } from './employee-view/employee-view.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'employees', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'add', component: EmployeeCreateComponent, canActivate: [AuthGuard] },
+  { path: 'view', component: EmployeeViewComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

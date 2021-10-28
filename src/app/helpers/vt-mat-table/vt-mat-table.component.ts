@@ -19,22 +19,37 @@ export class VtMatTableComponent implements OnInit {
   dataSource = new MatTableDataSource<Employee>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'email'];
+  displayedColumns = ['id', 'name', 'email', 'action'];
 
-  constructor(private employeeService : EmployeeService, private router:Router) {
+  constructor(private employeeService: EmployeeService, private router: Router) {
   }
 
-   ngOnInit(){
-     this.employeeService.getEmployeesList().subscribe((data:Employee[])=>
-     this.dataSource.data = data as Employee[]);
-   }
+  ngOnInit() {
+    this.loadData();
+  }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  AddEmployee(){    
+  loadData(){
+    this.employeeService.getEmployeesList().subscribe((data: Employee[]) =>
+      this.dataSource.data = data as Employee[]);
+  }
+  AddEmployee() {
     this.router.navigate(['/add']);
+  }
+  viewEmployee(id: number) {
+    this.router.navigate(['view'], { queryParams: { id: id } });
+  }
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.loadData();
+        },
+        (error: any) => console.log(error));
   }
 }

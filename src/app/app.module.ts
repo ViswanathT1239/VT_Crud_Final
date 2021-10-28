@@ -19,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import {MatIconModule} from '@angular/material/icon';
+import { EmployeeViewComponent } from './employee-view/employee-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
     RegisterComponent,
     EmployeeComponent,
     VtMatTableComponent,
-    EmployeeCreateComponent
+    EmployeeCreateComponent,
+    EmployeeViewComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
   ],
   providers: [
     AuthenticationService,

@@ -43,6 +43,7 @@ export class EmployeeCreateComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.employeeForm.invalid) {
+      this.loading = false;
       return;
     }
 

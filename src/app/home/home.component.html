@@ -1,8 +1,11 @@
+<br/>
+<br/>
+<br/>
+<h3>Welcome, {{currentUser.username}} !</h3>
 <p>You're successfully logged in!</p>
 <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
         {{user.username}} ({{user.firstname}} {{user.lastname}})
-        <!-- - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a> -->
     </li>
 </ul>

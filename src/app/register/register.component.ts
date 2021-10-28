@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  users = [];
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -33,6 +34,10 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+    this.userService.getAll().subscribe(data=>{
+      this.users=data;
+      this.users.sort((a,b)=>b.id-a.id);
     });
   }
 
@@ -54,6 +59,7 @@ export class RegisterComponent implements OnInit {
   createPerson() {
     this.loading = true;
     var user = {
+      id : this.users[0].id + 1,
       firstname: this.registerForm.value.firstname,
       lastname: this.registerForm.value.lastname,
       email: this.registerForm.value.email,
