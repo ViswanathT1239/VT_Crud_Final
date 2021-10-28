@@ -5,11 +5,12 @@
            <div class=" ">
              <div class="row d-flex justify-content-center align-items-center h-100">
                <div class="col">
-                 <div class="card card-registration my-4" style="margin-top: 0px !important;">
+                 <div class="card card-registration my-4" style="margin-top: 3rem!important;">
                    <div class="row g-0">
                       <div class="col-xl-6">
                        <div class="card-body p-md-12 text-black">
-                         <h3 class="mb-5 text-uppercase">Employee Creation Form</h3>
+                         <h3 class="mb-5 text-uppercase" *ngIf="isNew"> Add Employee</h3>
+                         <h3 class="mb-5 text-uppercase" *ngIf="!isNew">Edit Employee</h3>
          
                          <div class="row">
                            <div class="col-md-12 mb-4">
@@ -45,10 +46,15 @@
                            <button type="button" class="btn btn-light btn-lg" routerLink="/employees">Cancel</button>
        
        
-                           <button [disabled]="loading" class="btn btn-warning btn-lg ms-2">
+                           <button *ngIf="isNew" [disabled]="loading" class="btn btn-warning btn-lg ms-2">
                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                Add
                            </button>
+
+                           <button *ngIf="!isNew" [disabled]="loading" class="btn btn-warning btn-lg ms-2">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Save
+                        </button>
        
                          </div>
          

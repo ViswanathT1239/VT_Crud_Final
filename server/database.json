@@ -4,6 +4,11 @@
       "id": 1,
       "name": "Viswanath T",
       "email": "viswanath.t@mail.com"
+    },
+    {
+      "id": 2,
+      "name": "test user 1",
+      "email": "test.user@mail.com"
     }
   ],
   "users": [

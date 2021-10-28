@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { EmployeeService } from '../services/employee.service';
 
@@ -14,8 +14,11 @@ export class EmployeeCreateComponent implements OnInit {
   loading = false;
   submitted = false;
   employees = [];
+  isNew: boolean;
+  id: number;
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router,
     private employeeService: EmployeeService
   ) {
@@ -23,16 +26,22 @@ export class EmployeeCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.queryParams['id'];
+    this.isNew = !this.id;
     this.employeeForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required]
     });
     this.employeeService.getEmployeesList().subscribe(data => {
       this.employees = data;
-      if (this.employees.length>0){
-      this.employees.sort((a, b) => b.id - a.id);
+      if (this.employees.length > 0) {
+        this.employees.sort((a, b) => b.id - a.id);
       }
     });
+    if(!this.isNew){
+      this.employeeService.getEmployee(this.id)
+      .subscribe(data=>this.employeeForm.patchValue(data));
+    }
 
   }
 
@@ -48,14 +57,18 @@ export class EmployeeCreateComponent implements OnInit {
       this.loading = false;
       return;
     }
-
-    this.createPerson();
+    if(this.isNew){
+    this.createEmployee();
+    }
+    else{
+      this.updateEmployee();
+    }
   }
 
-  createPerson() {
+  createEmployee() {
     this.loading = true;
     var user = {
-      id: this.employees.length==0 ? 1 : this.employees[0].id + 1,
+      id: this.employees.length == 0 ? 1 : this.employees[0].id + 1,
       name: this.employeeForm.value.name,
       email: this.employeeForm.value.email
     };
@@ -71,5 +84,24 @@ export class EmployeeCreateComponent implements OnInit {
           this.loading = false;
         });
   }
+updateEmployee(){
+  this.loading = true;
+    var user = {
+      id: this.id,
+      name: this.employeeForm.value.name,
+      email: this.employeeForm.value.email
+    };
+    this.employeeService.updateEmployee(this.id, user)
+    .pipe(first())
+      .subscribe(
+        data => {
+          alert("Employee Updated Successfully!")
+          this.router.navigate(['/employees']);
+        },
+        error => {
+          alert("Error Occured!");
+          this.loading = false;
+        });
+}
 
 }
